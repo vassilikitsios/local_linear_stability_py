@@ -1,0 +1,112 @@
+#=======================================================================
+# Input deck 
+#=======================================================================
+#
+# Task the code will undertake
+#run_type = write_grid
+run_type = stability_analysis
+#run_type = group_modes
+#
+# Formulation of stability equations to solve
+equations = velocity_formulation
+#equations = vorticity_formulation
+#equations = write_grid
+#
+# Number of collocation points = N+1
+N = 128
+#
+# Domain scaling and stretching method
+#   No scaling done if set to "finite" with "domain_size=2" (from -1 to +1)
+scale_domain = finite
+#scale_domain = finite_unclustered
+#scale_domain = semi_finite
+#scale_domain = semi_finite_clustered
+#scale_domain = semi_finite_unclustered
+#
+domain_size = 2.0
+#domain_size = 16.0
+half_grid_point = 4.0
+#
+#=======================================================================
+# base flow - analytical profiles and read from file
+#=======================================================================
+#
+#----------- ANALYTICAL PROFILES ---------------------------------------
+#
+#base_flow = couette
+#
+base_flow = poiseuille
+#
+#base_flow = turbulent_channel
+#
+#base_flow = blasius
+tol = 1.0e-6
+max_iter = 1000
+min_iter = 5
+#
+#base_flow = shear_layer
+shear_layer_conv_u = 1.0
+#
+#base_flow = wake
+u_deficit = 0.30
+wake_half_width = 0.5
+#
+#----------- READ FROM FILE --------------------------------------------
+#
+# if (equations==velocity_formulation) then require u, du/dy
+# if (equations==vorticity_formulation) then require u, du/dy, d2u/dy2
+#
+# Specify format of input file as below
+#    if required wall normal derivatives are not provided then they will be differentiated 
+#base_flow = file_u
+#base_flow = file_u_y
+#base_flow = file_u_yy
+#
+#base_flow = file_DNS_output
+base_flow_file = ./restart/Re180.prof
+x_pos0 = 2000
+x_posN = 3001
+#
+#=======================================================================
+# Boundary conditions
+#=======================================================================
+#
+top_boundary_condition = wall
+#top_boundary_condition = freestream
+#
+bottom_boundary_condition = wall
+#bottom_boundary_condition = freestream
+#
+#=======================================================================
+# Stability Parameters
+#=======================================================================
+#
+Re = 2000
+#
+kx_real_min = 1.0
+kx_real_max = 1.0
+N_kx_real = 1
+#
+kx_imag_min = 0.0
+kx_imag_max = 0.0
+N_kx_imag = 1
+#
+N_kz_real = 1
+kz_real_max = 0.0
+kz_real_min = 0.0
+kz_imag = 0.0
+#
+# for "run_type = stability_analysis" Maximum number of eigenvectors written to file and plotted
+# for "run_type = group_modes" Maximum number of mode groups written to file and plotted
+num_modes_to_write = 10
+#
+#=======================================================================
+# Transient Growth Analysis
+#=======================================================================
+#
+dt = 0.1
+num_time_steps = 100
+#
+#=======================================================================
+# EOF
+#=======================================================================

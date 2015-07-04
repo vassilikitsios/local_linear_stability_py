@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#-------------------------------------------------
+# program details
+py=python
+bin_dir=../../src/
+bin_name=local_linear_stability
+bin=$bin_dir/$bin_name.py
+
+#-------------------------------------------------
+# clean up directory
+rm -rf images results
+
+#-------------------------------------------------
+# run code
+$py $bin 
+#$py $bin 1>$bin_name.out 2>$bin_name.err
+
+#-------------------------------------------------
