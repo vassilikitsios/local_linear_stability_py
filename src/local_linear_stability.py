@@ -71,7 +71,7 @@ elif (run_type=="stability_analysis"):
 	print '\nGenerating base flow ...'
 	bf.generate_base_flow(base_flow,scale_domain,tol,max_iter,min_iter,shear_layer_conv_u,wake_half_width,u_deficit,base_flow_file,\
 				domain_size,half_grid_point,x_pos0,x_posN,eta,D1,D2,D3,D4,u,u_y,u_yy,Re)
-	print '\nBuilding linear operators and the solving eigenvalue problem ...'
+	print '\nBuilding linear operators and solving the eigenvalue problem ...'
 	ns.run_stability_analysis(Nev,N_kx_real,N_kx_imag,N_kz_real,kx,kz,equations,\
 					eta,u,u_y,u_yy,Re,D1,D2,D4,top_BC,bottom_BC,num_modes_to_write)
 	if (N_kx_real*N_kx_imag*N_kz_real>1):
@@ -85,7 +85,7 @@ elif (run_type=="transient_growth"):
 	print '\nGenerating base flow ...'
 	bf.generate_base_flow(base_flow,scale_domain,tol,max_iter,min_iter,shear_layer_conv_u,wake_half_width,u_deficit,base_flow_file,\
 				domain_size,half_grid_point,x_pos0,x_posN,eta,D1,D2,D3,D4,u,u_y,u_yy,Re)
-	print '\nBuilding linear operators and the solving eigenvalue problem ...'
+	print '\nBuilding linear operators the solving the eigenvalue problem ...'
 	ns.run_transient_growth_analysis(Nev,N_kx_real,N_kx_imag,N_kz_real,kx,kz,equations,\
 					eta,u,u_y,u_yy,Re,D1,D2,D4,IW,top_BC,bottom_BC,num_modes_to_write,dt,num_time_steps)
 
